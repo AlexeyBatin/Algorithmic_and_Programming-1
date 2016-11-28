@@ -21,7 +21,7 @@ void randarr(int *arr,int lenght){ // Рандомний ввід елементів
   }
   printf("\n");
 }
-void output (int *arr,int lenght){ // Виведення масиву
+void output (int *arr,int lenght){ // Виведення масиву (масив за ад)
   int i;
   printf("\n\t\t------------------------------------------\n\t\t");
   for(i=1;i<=lenght;i++){
@@ -29,21 +29,21 @@ void output (int *arr,int lenght){ // Виведення масиву
   }
   printf("\n\t\t------------------------------------------\n");
 }
-void processing(int *arr,int *min,int *n,int lenght,int *ind){ // Обробка масиву
-  int i,amin,num=0,j=1; // Мінімальне значення
-  *min = arr[1];
+void processing(int *arr,int *min,int *n,int lenght,int *ind){ // Обробка масиву всі пар-и за адресою крім довжини
+  int i,num=0,j=1; // Мінімальне значення
+  /**min = arr[1];
   for (i = 1; i <=lenght; i++) {
     if (arr[i] <= *min) {*min = arr[i];*n=i;}
-  }
+  }*/
   // мінімальне значення 2ої половини
   if (lenght%2==0) i=(lenght/2)+1;
   else i=(lenght/2)+2;
-  amin = arr[i];
+  *min = arr[i];
   for(i;i<=lenght;i++){  
-    if(arr[i]<= amin) {amin = arr[i]; num=i;}
+    if(arr[i]<= *min) {*min = arr[i]; *n=i;}
   }
-  printf("amin = %d number %d \n\n",amin,num);
-  if(num%2==0 && amin<0){
+  
+  if(num%2==0 && *min<0){ // Обробка масиву
     for (i = 1; i <= lenght; i++) {
       if (arr[i]%2 == 0) { arr[j]=arr[i]; j++;}
     }
@@ -57,25 +57,33 @@ int main () {
   int lenght,ind,min,n;
   int arr[limit];
   SetConsoleOutputCP(1251);
-  printf("\tВведіть кількість елементів масиву (>0): \n");
-  scanf_s("%d",&lenght);
-  do { printf( "\tЗаповнити масив самостійно? Y/N (Yes/No): \n");
-  scanf("%s",&d);
-  printf("————————————————————————————————\n\n");
-  if(d[0] == 'y'){ 
-    input(arr,lenght); ind = 0;
-  } // самостійний ввід
-  else if(d[0] == 'n'){  
-    randarr(arr,lenght); ind = 0;
-  } // рандомно
-  else ind = 1;
-  fflush(stdin);
-  } while (ind);
-  output(arr,lenght);
-  processing(arr,&min,&n,lenght,&ind);
-  printf("\tЗнайдений мінімальний елемент = %d , номер елемента = %d \n\n",min,n);
-  // обробка 
-  if (ind) {printf("\tОбробку масиву виконано \n "); output(arr,lenght);}
-  else printf("\tОбробку не виконано\n");
-  system("pause");
-}
+  ind = 1;
+  while (ind){
+    fflush(stdin);
+    do { printf("\tВведіть кількість елементів масиву (>0): \n");
+    scanf_s("%d",&lenght);
+    if (lenght>0 && lenght<limit) ind = 0; }
+    while (ind);
+    do { printf( "\tЗаповнити масив самостійно? y/n (Yes/No): \n");
+    scanf("%s",&d);
+    printf("————————————————————————————————\n\n");
+    if(d[0] == 'y'){ 
+      input(arr,lenght); ind = 0;
+    } // самостійний ввід
+    else if(d[0] == 'n'){  
+      randarr(arr,lenght); ind = 0;
+    } // рандомно
+    fflush(stdin);
+    } while (ind);
+    output(arr,lenght);
+    processing(arr,&min,&n,lenght,&ind);
+    printf("\tЗнайдений мінімальний елемент = %d , номер елемента = %d \n\n",min,n);
+    // обробка 
+    if (ind) {printf("\tОбробку масиву виконано \n "); output(arr,lenght);}
+    else printf("\tОбробку не виконано\n");
+    printf("Обробити інший масив? y (Yes): \n");
+    scanf("%s",&d);
+    if(d[0] =='y' ) ind = 1;
+    else ind = 0;}
+    system("pause");
+  }
