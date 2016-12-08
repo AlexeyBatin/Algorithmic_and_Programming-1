@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day</title>
+    <script>
+        d1 = prompt("Введіть дату у форматі: рік,місяць( від 0 - січень до 11 - грудень,день ( 1 - 31). Приклад: 1999,5,22 ");
+        d2 = prompt("Введіть дату у форматі: рік,місяць( від 0 - січень до 11 - грудень,день ( 1 - 31). Приклад: 1999,5,22  ");
+        var date_1 = new Date(d1);
+        var date_2 = new Date(d2);
+        var result = Math.abs(date_1 - date_2);
+        var day = result/1000/3600/24;
+        document.write("Перша дату, яку ви ввели: " + date_1 + "<br/>");
+        document.write("Друга дата , яку ви ввели: " + date_2 + "<br/>");
+        document.write( "-----------------------------------------<br/>");
+        document.write( "Різниця в кіл-ті днів між датами: " + day +" <br/>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
