@@ -24,3 +24,4 @@
 #### 9. Находим нашу папку , куда разархивировали архив `Algorithmic_and_Programming-1-master.zip` и добавляем нужный `.c` файл.
 #### 10. Готово. Ждем пока подгрузятся библиотеки и можно запускать копмпиляцию (` F5 `) .
 <img src="https://github.com/AlexeyBatin/Algorithmic_and_Programming-1/blob/master/info/finish.png?raw=true"></img>
+## Надеюсь я помог тебе :) 
