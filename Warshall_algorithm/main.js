@@ -1,3 +1,36 @@
+var ConStrSize, //  розмір матриці
+    ask, // Рандом чи власноруч
+    generate, // bool чи потрібно генерувати
+    myMatrix; // матриця
+ConStrSize = +prompt("Введіть розмір матриці:");
+console.log("Введений розмір матриці: " + ConStrSize);
+ask = prompt("Введення елементів самостійно чи рандомно?");
+if (ask == "Y" || ask == "y") {
+    console.info("\nВи можете вводить елементи в виді матриці\n Елементи рядку записуйте через пробіл,",
+        "для переходу на наступний натисніть 'Ентер' \n Пам'ятайте, що у вас матриця розмірності " + ConStrSize + "x" + ConStrSize);
+    generate = false;
+    myMatrix = matrixArray(ConStrSize, ConStrSize);
+    output();
+} else {
+    console.info("Матриця розмірності " + ConStrSize + "x" + ConStrSize + " буде згенерована рандомними значеннями");
+    generate = true;
+    myMatrix = matrixArray(ConStrSize, ConStrSize);
+    output();
+}
+/////////// Алгоритм Уоршала
+for (var i = 0; i < ConStrSize; i++) {
+    for (var j = 0; j < ConStrSize; j++) {
+        if ((i != j) && (myMatrix[i][j] != 0)) {
+            for (var k = 0; k < ConStrSize; k++) {
+                if (myMatrix[i][k] || myMatrix[j][k])
+                    myMatrix[i][k] = 1;
+            }
+        }
+    }
+}
+console.log("Алгоритм Уоршала виконано");
+document.write("<h2>Матриця після алгоритму Уоршала</h2>");
+output();
 function matrixArray(rows, columns) { // Генерування матриці
     var arr = [];
     for (var i = 0; i < columns; i++) {
@@ -13,7 +46,6 @@ function matrixArray(rows, columns) { // Генерування матриці
     }
     return arr;
 }
-
 function output() { // Вивід матриці
     document.write('<table class="table table-bordered">');
     for (var i = 0; i < myMatrix.length; i++) {
@@ -26,40 +58,4 @@ function output() { // Вивід матриці
     document.write("</table>");
 }
 
-var ConStrSize, // зміна розміру матриці
-    ask, // Рандом чи власноруч
-    generate, // bool чи потрібно генерувати
-    myMatrix;
-ConStrSize = +prompt("Введіть розмір матриці:");
-console.log("Введений розмір матриці: " + ConStrSize);
-ask = prompt("Введення елементів самостійно чи рандомно?");
-if (ask == "Y" || ask == "y") {
-    console.info("\nВи можете вводить елементи в виді матриці\n Елементи рядку записуйте через пробіл,",
-        "для переходу на наступний натисніть 'Ентер' \n Пам'ятайте, що у вас матриця розмірності " + ConStrSize + "x" + ConStrSize);
-    generate = false;
-    myMatrix = matrixArray(ConStrSize, ConStrSize);
-    output();
-} else {
-    console.info("Матриця розмірності " + ConStrSize + "x" + ConStrSize + "буде згенерована рандомними значеннями");
-    generate = true;
-    myMatrix = matrixArray(ConStrSize, ConStrSize);
-    output();
-}
-/////////// Алгоритм Уоршала
-for (var i = 0; i < ConStrSize; i++)
-{
-    for (var j = 0; j < ConStrSize; j++)
-    {
-        if ( (i != j) && (myMatrix[i][j] != 0))
-        {
-            for (var k = 0; k < ConStrSize; k++)
-            {
-                if (myMatrix[i][k] || myMatrix[j][k])
-                    myMatrix[i][k] = 1;
-            }
-        }
-    }
-}
-console.log("Алгоритм Уоршала виконано");
-document.write("<h2>Матриця після алгоритму Уоршала</h2>");
-output();
+
