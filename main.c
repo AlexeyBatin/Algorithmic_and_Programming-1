@@ -18,7 +18,7 @@ void input (char str[],int *i)
 void new_text (char str[],int i)
 {
   int j=0,k,p;
-  char symbols[] = {'б','в','г','ґ','д','ж','з','й','к','л','м','н','п','р','с','т','ф','х','ц','ч','ш','щ','й'};
+  char symbols[] = {'Р±','РІ','Рі','Т‘','Рґ','Р¶','Р·','Р№','Рє','Р»','Рј','РЅ','Рї','СЂ','СЃ','С‚','С„','С…','С†','С‡','С€','С‰','Р№'};
   while (j<i+1)
   {
     for(k=0;k<sizeof(symbols);k++)
@@ -39,23 +39,23 @@ int main () {
   SetConsoleCP(1251);
   SetConsoleOutputCP(1251);
   while (ind) {
-    printf("Введіть початковий текст:\n\t");
+    printf("Р’РІРµРґС–С‚СЊ РїРѕС‡Р°С‚РєРѕРІРёР№ С‚РµРєСЃС‚:\n\t");
     input(str,&i);
     new_text(str,i);
-    printf("\nТекст після обробки:\n");
+    printf("\nРўРµРєСЃС‚ РїС–СЃР»СЏ РѕР±СЂРѕР±РєРё:\n");
     printf("\t");
     for (j=0;j<i+1;j++)
       printf("%c",str[j]);
     printf("\n");
     fflush(stdin);
-    printf("\n\tБажаєте обробити ще один рядок? y (Yes): \n");
+    printf("\n\tР‘Р°Р¶Р°С”С‚Рµ РѕР±СЂРѕР±РёС‚Рё С‰Рµ РѕРґРёРЅ СЂСЏРґРѕРє? y (Yes): \n");
     scanf("%s", &d);
     if (d[0] == 'y')
     {
       ind = 1;
       system("cls");
       fflush(stdin);
-    } // очищує консоль
+    } // РѕС‡РёС‰СѓС” РєРѕРЅСЃРѕР»СЊ
     else ind = 0;
   }
   system("pause");
