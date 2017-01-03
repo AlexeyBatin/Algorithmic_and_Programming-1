@@ -3,13 +3,13 @@
 #include <math.h>
 #include <Windows.h> // Прототипи функцій 
 void input(double *x,double *eps,int *limit); //  всі параметри адреси змінних
-double variety(double x,double eps,int limit,int *i); // i - адреса 
+double variety(double x,double eps,int limit,int *i); // i - адреса
 double function(double x); // за значенням змінних
 void output(int limit,double s,double f,int i); // за значенням змінних
-int main(int argc, char* argv[])
+int main()
 {
   double x,eps,s,f; // локальні
-  int limit,i; 
+  int limit,i; // локальні змінні
   SetConsoleOutputCP(1251);
   printf("\tФункція f(x) = sin(x)\n");
   printf("\t Ряд E(-1)^n*x^2n+1/(2n+1)! при хє[-10;10]\n");

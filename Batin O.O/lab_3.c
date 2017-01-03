@@ -1,3 +1,6 @@
+/* Batin Oleksiy Oleksandrovych , hrupa TM-62 , variant ¹3.
+Laboratorna robota ¹3.Prohramuvannia nayprostishykh obchysliuval'nykh algorytmiv liniynoy
+struktury */
 #include <stdio.h>
 #include <stdlib.h>
 #define _USE_MATH_DEFINES
